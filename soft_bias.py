@@ -27,7 +27,7 @@ class SoftBiasScorer:
         
         # 2. 유저의 bib 논문 벡터들을 DB에서 조회 (using embedding_db)
         # DB에 존재하는 ID만 가져옴 
-        bib_embs = [self.embedding_db[bid] for bid in user_bib_ids if bid in self.embedding_db]
+        bib_embs = [embedding_db[bid] for bid in user_bib_ids if bid in embedding_db]
 
         # 2-1. 필터링 후 남은 논문벡터가 없다면 0점 처리 
         if not bib_embs:
