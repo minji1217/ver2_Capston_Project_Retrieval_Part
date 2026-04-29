@@ -43,12 +43,12 @@ class SoftBiasScorer:
             p_id = item['paper_id']
 
             # 후보 논문이 DB에 없으면 0점 처리
-            if p_id not in self.embedding_db:
+            if p_id not in embedding_db:
                 item['bib_score'] = 0.0
                 continue    
 
             # 후보 논문의 768차원 벡터를 embedding_db에서 바로 가져옴
-            p_vec = self.embedding_db[p_id]
+            p_vec = embedding_db[p_id]
 
             # 행렬 내적 연산 : 후보 논문 1개 - 유저 bib N개 -> N개의 유사도 점수 배열 생성 
             # SPECTER2 벡터를 L2 정규화하였기에 내적이 곧 코사인 유사도 
