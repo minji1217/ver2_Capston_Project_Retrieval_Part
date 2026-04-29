@@ -1,0 +1,420 @@
+{
+    "query_id": "req_20260425_161200_970",
+    "candidates": [
+        {
+            "paper_id": "dummy_paper_065",
+            "sim": 0.9522342064714947,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_030",
+            "sim": 1.0,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_077",
+            "sim": 0.9587827426810478,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_046",
+            "sim": 0.7846687211093991,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_081",
+            "sim": 0.7654083204930663,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_032",
+            "sim": 0.7172573189522343,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_029",
+            "sim": 0.7496147919876734,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_049",
+            "sim": 0.6660246533127889,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_085",
+            "sim": 0.6456086286594762,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_000",
+            "sim": 0.676040061633282,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_053",
+            "sim": 0.6197996918335902,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_093",
+            "sim": 0.62904468412943,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_044",
+            "sim": 0.5951463790446841,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_064",
+            "sim": 0.5439137134052389,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_001",
+            "sim": 0.5982280431432974,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_067",
+            "sim": 0.5350539291217258,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_024",
+            "sim": 0.5069337442218798,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_026",
+            "sim": 0.5123266563944531,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_031",
+            "sim": 0.5227272727272727,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_009",
+            "sim": 0.4749614791987674,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_016",
+            "sim": 0.5231124807395994,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_038",
+            "sim": 0.4437596302003082,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_011",
+            "sim": 0.43990755007704163,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_095",
+            "sim": 0.44684129429892144,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_019",
+            "sim": 0.4680277349768875,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_052",
+            "sim": 0.4526194144838213,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_012",
+            "sim": 0.41949152542372886,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_074",
+            "sim": 0.38482280431432975,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_041",
+            "sim": 0.387904468412943,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_037",
+            "sim": 0.38058551617873654,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_073",
+            "sim": 0.38405238828967647,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_025",
+            "sim": 0.37442218798151006,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_028",
+            "sim": 0.37557781201848994,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_035",
+            "sim": 0.3540061633281973,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_040",
+            "sim": 0.3401386748844376,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_017",
+            "sim": 0.31394453004622497,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_003",
+            "sim": 0.43721109399075503,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_058",
+            "sim": 0.3050847457627119,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_047",
+            "sim": 0.2908320493066256,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_006",
+            "sim": 0.301617873651772,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_048",
+            "sim": 0.4006163328197227,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_060",
+            "sim": 0.2696456086286595,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_090",
+            "sim": 0.24191063174114022,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_055",
+            "sim": 0.24345146379044685,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_054",
+            "sim": 0.22765793528505393,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_096",
+            "sim": 0.3216486902927581,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_050",
+            "sim": 0.25423728813559326,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_043",
+            "sim": 0.19992295839753466,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_063",
+            "sim": 0.20184899845916796,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_069",
+            "sim": 0.327426810477658,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_068",
+            "sim": 0.25616332819722654,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_010",
+            "sim": 0.1906779661016949,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_034",
+            "sim": 0.2060862865947612,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_020",
+            "sim": 0.16371340523882896,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_004",
+            "sim": 0.13482280431432975,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_036",
+            "sim": 0.2137904468412943,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_094",
+            "sim": 0.2137904468412943,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_071",
+            "sim": 0.10978428351309708,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_045",
+            "sim": 0.19260400616332818,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_059",
+            "sim": 0.19260400616332818,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_007",
+            "sim": 0.06933744221879815,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_079",
+            "sim": 0.08281972265023112,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_087",
+            "sim": 0.032742681047765766,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_002",
+            "sim": 0.06548536209553159,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_070",
+            "sim": 0.10978428351309708,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_013",
+            "sim": 0.021186440677966076,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_062",
+            "sim": 0.0,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_057",
+            "sim": 0.18489984591679506,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_076",
+            "sim": 0.18489984591679506,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_099",
+            "sim": 0.1174884437596302,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_039",
+            "sim": 0.11556240369799692,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_021",
+            "sim": 0.18489984591679506,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_061",
+            "sim": 0.11363636363636363,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_086",
+            "sim": 0.18489984591679506,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_072",
+            "sim": 0.18489984591679506,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_075",
+            "sim": 0.1059322033898305,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_015",
+            "sim": 0.18489984591679506,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_088",
+            "sim": 0.18489984591679506,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_092",
+            "sim": 0.18489984591679506,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_098",
+            "sim": 0.18489984591679506,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_091",
+            "sim": 0.021186440677966076,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_023",
+            "sim": 0.017334360554699536,
+            "bib_score": 0.0
+        },
+        {
+            "paper_id": "dummy_paper_066",
+            "sim": 0.007704160246533116,
+            "bib_score": 0.0
+        }
+    ]
+}
