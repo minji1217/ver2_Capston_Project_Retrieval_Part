@@ -9,7 +9,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__)) # 기본 폴더 작성
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
 EMBEDDING_DB_PATH = os.path.join(DATA_DIR, "embedding_db.pkl") # 논문id-SPECTER2 임베딩 매핑 저장 파일 경로 
-FAISS_INDEX_PATH = os.path.join(DATA_DIR, "faiss.index") # 실제 FAISS 인덱스 저장 파일 경로
+FAISS_INDEX_PATH = os.path.join(DATA_DIR, "candidates.index") # 실제 FAISS 인덱스 저장 파일 경로
 ID_MAPPING_PATH = os.path.join(DATA_DIR, "id_mapping.pkl") # FAISS 인덱스-논문 매핑 저장 파일 경로 
 
 
@@ -27,7 +27,7 @@ ID_MAPPING_PATH = os.path.join(DATA_DIR, "id_mapping.pkl") # FAISS 인덱스-논
 
 # 1-1. 데이터 경로 
 
-EVAL_DATA_PATH = os.path.join(DATA_DIR, "dataset.json") # 튜닝 위한 val 데이터셋
+EVAL_DATA_PATH = os.path.join(DATA_DIR, "eval_dataset.json") # 튜닝 위한 val 데이터셋
 # TEST_DATA_PATH = os.path.join(DATA_DIR, "test_dataset.json") # 최종 평가용 test 데이터셋 
 
 # 2. 모델/정규식
@@ -37,8 +37,8 @@ CITE_TAG_PATTERN = r"\[CITE:(.*?)\]"
 
 # 3. Retrieval & Fusion 하이퍼파라미터 설정
 WINDOW_SIZE = 100           # Context Query 생성시 placeholder 기준 자를 토큰 수 
-SIMILARITY_THRESHOLD = 0.6  # FAISS 코사인 유사도 최소 임계값
-TOP_K_RETRIEVAL = 75        # 1차 FAISS 검색에서 Paper/Context Query에 대해 관련 논문 각각 뽑을 개수 
+SIMILARITY_THRESHOLD = 0.5  # FAISS 코사인 유사도 최소 임계값
+TOP_K_RETRIEVAL = 100       # 1차 FAISS 검색에서 Paper/Context Query에 대해 관련 논문 각각 뽑을 개수 
 TOP_K_FINAL = 100           # 75+75 -> fusion하여 최종 남길 후보 개수 
 RRF_K = 60                  # RRF 스무딩 상수 
 PAPER_BATCH_SIZE = 64       # 논문 배치 크기 (for main)

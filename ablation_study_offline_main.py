@@ -25,6 +25,15 @@ def process_paper_batch(paper_batch, query_builder, embedder, retriever, bib_sco
         )
 
         for sample in context_queries:
+            # [for 초기 데이터] db에 존재하는 진짜 정답만 추려냄 
+            valid_targets = [tid for tid in sample['target_ids'] if tid in embedding_db]
+
+            # [for 초기 데이터] 
+            if not valid_targets: continue 
+
+            # [for 초기 데이터] 
+            sample['target_ids'] = valid_targets
+
             safe_context = sample['context_query']
             safe_title = utils.truncate_words(title, 30)
             safe_abstract = utils.truncate_words(abstract, 280)
@@ -130,7 +139,7 @@ def run_pipeline(data_path, paper_batch_size):
             for q_data in batch_results:
                 predicted_ids = [cand['paper_id'] for cand in q_data['candidates']]
                 gt_ids = q_data['target_ids']
-                
+
                 # 채점
                 metrics = calculate_metrics(predicted_ids, gt_ids)
                 

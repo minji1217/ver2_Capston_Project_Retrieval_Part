@@ -33,6 +33,15 @@ def process_paper_batch(paper_batch, query_builder, embedder, retriever, bib_sco
 
         # 해당 논문의 모든 인용구([CITE:])를 context_query_list에 저장
         for sample in context_queries:
+            # [for 초기 데이터] db에 존재하는 진짜 정답만 추려냄 
+            valid_targets = [tid for tid in sample['target_ids'] if tid in embedding_db]
+
+            # [for 초기 데이터] 
+            if not valid_targets: continue 
+
+            # [for 초기 데이터] 
+            sample['target_ids'] = valid_targets
+
             context_query_list.append(sample['context_query'])
             metadata_list.append(sample) 
 
@@ -166,9 +175,10 @@ def run_pipeline(data_path, paper_batch_size):
             for q_data in batch_results:
                 predicted_ids = [cand['paper_id'] for cand in q_data['candidates']]
                 gt_ids = q_data['target_ids']
-
+                
                 # 쿼리당 채점 
                 metrics = calculate_metrics(predicted_ids, gt_ids)
+
 
                 # 배치 및 global metrics에 누적 
                 for key in global_metrics:
