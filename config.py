@@ -38,7 +38,7 @@ CITE_TAG_PATTERN = r"\[CITE:(.*?)\]"
 # 3. Retrieval & Fusion 하이퍼파라미터 설정
 WINDOW_SIZE = 100           # Context Query 생성시 placeholder 기준 자를 토큰 수 
 SIMILARITY_THRESHOLD = 0.5  # FAISS 코사인 유사도 최소 임계값
-TOP_K_RETRIEVAL = 100       # 1차 FAISS 검색에서 Paper/Context Query에 대해 관련 논문 각각 뽑을 개수 
+TOP_K_RETRIEVAL = 150       # 1차 FAISS 검색에서 Paper/Context Query에 대해 관련 논문 각각 뽑을 개수 
 TOP_K_FINAL = 100           # 75+75 -> fusion하여 최종 남길 후보 개수 
 RRF_K = 60                  # RRF 스무딩 상수 
 PAPER_BATCH_SIZE = 64       # 논문 배치 크기 (for main)

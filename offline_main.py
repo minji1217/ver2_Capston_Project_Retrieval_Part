@@ -102,7 +102,7 @@ def process_paper_batch(paper_batch, query_builder, embedder, retriever, bib_sco
         raw_sims = [c['sim'] for c in biased]
         raw_bibs = [c.get('bib_score', 0.0) for c in biased]
 
-        norm_sims = utils.normalize(raw_sims)
+        norm_sims = raw_sims
         norm_bibs = utils.normalize(raw_bibs)
 
         # top-100 각 논문에 대해 필요한 피처만 추출
@@ -157,7 +157,7 @@ def run_pipeline(data_path, paper_batch_size):
 
     # 전체 데이터 global metrics 누적 변수 초기화 
     total_queries_so_far = 0
-    global_metrics = {"Recall@10": 0.0, "Recall@50": 0.0, "Recall@100": 0.0, "MRR": 0.0}
+    global_metrics = {"Recall@50": 0.0, "Recall@100": 0.0, "MRR": 0.0}
 
     # 3. 데이터셋 순회하며 파이프라인 실행 (paper_batch_size(예: 32) 단위로 쪼갬)
     for i in range(0, total_papers, paper_batch_size):
@@ -188,7 +188,7 @@ def run_pipeline(data_path, paper_batch_size):
             total_queries_so_far += batch_queries_count
 
             # 배치 평균 성능 출력
-            print(f"[Batch 성능] Recall@10: {batch_metrics['Recall@10'] / batch_queries_count:.4f} | MRR: {batch_metrics['MRR'] / batch_queries_count:.4f}")
+            print(f"[Batch 성능] Recall@50: {batch_metrics['Recall@50'] / batch_queries_count:.4f} | Recall@100: {batch_metrics['Recall@100'] / batch_queries_count:.4f} | MRR: {batch_metrics['MRR'] / batch_queries_count:.4f}")
         
         all_processed_queries.extend(batch_results)# 다음 파트에 합치기 (batch_results 이용할지 말지)
     
