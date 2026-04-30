@@ -62,13 +62,24 @@ def process_paper_batch(paper_batch, query_builder, embedder, retriever, bib_sco
     # 4. Soft bias 적용
     for i in range(total_samples):
         meta = metadata_list[i]
+        q_id = meta['query_id']
 
         # FAISS에서 뽑힌 1개의 top-100 결과 
-        candidates = search_results[i]
+        raw_candidates = search_results[i]
+
+        # 기존 Fusion함수가 하던 데이터 가공 역할 대체 
+        formatted_candidates = []
+        for rank_idx, cand in enumerate(raw_candidates):
+            formatted_candidates.append({
+                "query_id": q_id,
+                "rank": rank_idx+1, 
+                "paper_id": cand['paper_id'],
+                "sim": float(cand['score']) # FAISS의 score -> sim 
+            })
 
         # soft bias 계산 (bib_ids 사용)
         user_bibs = meta.get('bib_ids', [])
-        biased = bib_scorer.soft_bias(candidates, user_bibs, embedding_db)
+        biased = bib_scorer.soft_bias(formatted_candidates, user_bibs, embedding_db)
 
         # 정규화 
         raw_sims = [c['sim'] for c in biased]
@@ -134,7 +145,7 @@ def run_pipeline(data_path, paper_batch_size):
         # 배치 단위 성능 평가 로직
         batch_queries_count = len(batch_results)
         if batch_queries_count > 0:
-            batch_metrics = {"Recall@10": 0.0, "Recall@50": 0.0, "Recall@100": 0.0, "MRR": 0.0}
+            batch_metrics = {"Recall@50": 0.0, "Recall@100": 0.0, "MRR": 0.0}
 
             for q_data in batch_results:
                 predicted_ids = [cand['paper_id'] for cand in q_data['candidates']]
