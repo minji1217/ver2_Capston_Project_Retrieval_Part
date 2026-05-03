@@ -5,3 +5,4 @@ transformers==4.39.3
 adapters==0.2.1
 huggingface_hub==0.22.2
 sentence-transformers==2.5.1
+nltk 

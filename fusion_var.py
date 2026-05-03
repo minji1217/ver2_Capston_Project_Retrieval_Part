@@ -21,7 +21,7 @@ def rank_fusion_var(paper_query_results, context_query_results, p_vecs, c_vecs, 
     # 한 논문의 한 placeholder에서의 paper/context query에 대해 수행
     for p_res, c_res, p_v, c_v in zip(paper_query_results, context_query_results, p_vecs, c_vecs):
         fusion_result = {}
-        # 1. 모든 후보(PAPER/CONTEXT 결과 top-75)의 paper id를 합집합으로 모음
+        # 1. 모든 후보(PAPER/CONTEXT 결과 top-100)의 paper id를 합집합으로 모음
         # 예: {'1975812', '124346', ...}
         all_pids = set([item['paper_id'] for item in p_res] + [item['paper_id'] for item in c_res])
 

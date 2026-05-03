@@ -1,4 +1,5 @@
 import re
+import nltk 
 from transformers import AutoTokenizer
 import config
 
@@ -13,9 +14,17 @@ class QueryBuilder:
         # SPECTER2 모델이 읽을 수 있는 형태로 글자 잘라주는 도구 
         self.tokenizer = AutoTokenizer.from_pretrained(model_name) 
 
-    def build_offline_query(self, paper_id, full_text, title, abstract, all_references, window_size = config.WINDOW_SIZE):
+        # [추가] NLTK 문장 토크나이저 다운로드 (최초 1회만 실행)
+        try:
+            nltk.data.find('tokenizers/punkt')
+        except LookupError:
+            print("NLTK punkt 데이터를 다운로드 중...")
+            nltk.download('punkt') # 문장 분리 기능에 필요한 지식 데이터베이스 
+
+
+    def build_offline_query(self, paper_id, full_text, title, abstract, all_references, num_sentences = config.NUM_SENTENCES):
         '''
-        [다중 인용 처리]
+        [다중 인용 처리 - NLTK 기반 문장 토큰화 적용]
         논문 한 편의 전체 텍스트에서 모든 [CITE] 위치를 찾아 
         각각 (Paper Query, Context Query, Target_Index) 리스트 반환 
         '''
@@ -46,9 +55,25 @@ class QueryBuilder:
             # for -> if -> [strip()]
 
             # 4. [for 효율성] 해당 인용구 직전의 텍스트 슬라이싱 (placeholder 전 1000글자 정도 1차로 가져옴, 약 150~200단어)
-            buffer_zone = max(0, start_pos - 1000)
+            buffer_zone = max(0, start_pos - 1500)
             raw_snippet = full_text[buffer_zone:start_pos]
 
+            # 5. NLTK 이용해 문장 단위 분할 (리스트로 분해)
+            sentences = nltk.sent_tokenize(raw_snippet)
+            
+            # 5-1. 마지막 3문장만 추출 
+            selected_sentences = sentences[-num_sentences:]
+
+            # 6. 첫 문장이 앞부분이 잘려 나간 상태일 경우 온전한 단어부터 시작하도록 
+            # if len(sentences) <= num_sentences and len(selected_sentences) > 0:
+            #     if " " in selected_sentences[0]:
+            #         selected_sentences[0] = selected_sentences[0][selected_sentences[0].find(" ")+1:]
+
+            # 7. 추출된 문장들을 [SEP] 단위로 결합하여 최종 context 구성 
+            context_query = " [SEP] ".join(selected_sentences)
+            
+            
+            ''''
             # 5. [for 정밀화] 토큰 단위로 변환 후 뒤에서부터 추출 
             # 토크나이저로 쪼갠 뒤, 정확히 window_size만큼 가져옴
             tokens = self.tokenizer.encode(raw_snippet, add_special_tokens = False) # [CLS], [SEP] 같은 특수 기호 뺌 
@@ -63,6 +88,7 @@ class QueryBuilder:
                 # 첫번째 공백 위치를 찾고, 그 공백 바로 다음 글자부터 끝까지 다시 가져옴
                 # strip 통해 문자열 양쪽 끝에 있는 불필요한 공백 제거 
                 context = context[context.find(" ") + 1:].strip() # context[숫자:] : 숫자부터 끝까지 가져옴
+            '''
             '''
             # 6. 쿼리 2개에 대해 union
             # Heavy Query (Title + Abstract + Context)
@@ -89,10 +115,7 @@ class QueryBuilder:
             truncated_abstract = " ".join(abstract.split()[:150])
             truncated_title = " ".join(title.split()[:30])
             '''
-        
-
-            # context Query (Context Only)
-            context_query = context
+    
 
             # query_id 생성 (예: paper_id = 123, placeholder_idx = 0 -> 123_0 )
             q_id = f"{paper_id}_{idx:02d}"
@@ -113,7 +136,7 @@ class QueryBuilder:
         
         return paper_query, context_queries
     
-    def build_online_query(self, user_input_text, title = "", abstract = "", window_size = config.WINDOW_SIZE):
+    def build_online_query(self, user_input_text, title = "", abstract = "", num_sentences = config.NUM_SENTENCES):
         '''
         [실시간 쿼리 빌더] 유저가 \\cite{ 를 입력한 직후 전송된 텍스트(현재 커서 이전 1000글자 정도) 파싱
         '''
@@ -121,18 +144,15 @@ class QueryBuilder:
         # 1. 유저가 입력한 텍스트에서 \cite{ 의 정확한 위치 찾음 
         raw_snippet = user_input_text.replace("\\cite{", "").strip()
 
-        # 2. 토큰 제한 (window_size 100개 토큰만큼 정확히 자르기)
-        tokens = self.tokenizer.encode(raw_snippet, add_special_tokens = False)
-        selected_tokens = tokens[-window_size:]
-        context = self.tokenizer.decode(selected_tokens, skip_special_tokens = True)
-        
-        # 3. 토큰 단위로 잘랐을 때 생기는 깨진 단어 포함 방지
-        if " " in context:
-            context = context[context.find(" ") + 1:].strip()
+        # NLTK 문장 분리 적용
+        sentences = nltk.sent_tokenize(raw_snippet)
+        selected_sentences = sentences[-num_sentences:]
+
+        # 문장들을 [SEP] 단위로 결합 
+        context_query = " [SEP] ".join(selected_sentences)
 
         # 4. 최종 쿼리 생성 (paper_query, context_query 생성)
         paper_query = f"{title} [SEP] {abstract}".strip()
-        context_query = context
 
         return paper_query, context_query
 
