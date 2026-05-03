@@ -36,14 +36,14 @@ ADAPTER_NAME = "allenai/specter2_proximity"
 CITE_TAG_PATTERN = r"\[CITE:(.*?)\]"
 
 # 3. Retrieval & Fusion 하이퍼파라미터 설정
-NUM_SENTENCES = 3          # Context Query 생성시 placeholder 기준 자를 문장 수 
-SIMILARITY_THRESHOLD = 0.5  # FAISS 코사인 유사도 최소 임계값
-TOP_K_RETRIEVAL = 150       # 1차 FAISS 검색에서 Paper/Context Query에 대해 관련 논문 각각 뽑을 개수 
-TOP_K_FINAL = 100           # 75+75 -> fusion하여 최종 남길 후보 개수 
+NUM_SENTENCES = 3           # Context Query 생성시 placeholder 기준 자를 문장 수 
+SIMILARITY_THRESHOLD = 0.4  # FAISS 코사인 유사도 최소 임계값
+TOP_K_RETRIEVAL = 200       # 1차 FAISS 검색에서 Paper/Context Query에 대해 관련 논문 각각 뽑을 개수 
+TOP_K_FINAL = 150           # 75+75 -> fusion하여 최종 남길 후보 개수 
 RRF_K = 60                  # RRF 스무딩 상수 
-PAPER_BATCH_SIZE = 64       # 논문 배치 크기 (for main)
-QUERY_BATCH_SIZE = 64       # 쿼리 배치 크기 (for encode) 
+PAPER_BATCH_SIZE = 256      # 논문 배치 크기 (for main)
+QUERY_BATCH_SIZE = 256      # 쿼리 배치 크기 (for encode) 
 MAX_SEQ_LENGTH = 512        # SPECTER2 최대 입력 크기 
-PAPER_SIM_WEIGHT = 0.4      # 중복 논문일 경우 가중합 비율 (paper_query) 
-CONTEXT_SIM_WEIGHT = 0.6    # 중복 논문일 경우 가중합 비율 (context_query)
+PAPER_SIM_WEIGHT = 0.3      # 가중합 비율 (paper_query) 
+CONTEXT_SIM_WEIGHT = 0.7    # 가중합 비율 (context_query)
 
